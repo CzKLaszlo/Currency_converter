@@ -26,3 +26,38 @@ const exRateTxt = document.querySelector("form .result");
     ].toLowerCase()}.png`;
   });
 });
+
+async function getExchangeRate() {
+  const amountVal = amount.value || 1;
+  exRateTxt.innerText = "Getting exchange rate...";
+
+  try {
+    const response = await fetch(
+      ` https://v6.exchangerate-api.com/v6/bfbad2321f9ef1e721cbc6cf/latest/${fromCur.value}`
+    );
+    const result = await response.json();
+    const exchangeRate = result.conversion_rates[toCur.value];
+    const totalExRate = (amountVal * exchangeRate).toFixed(2);
+    exRateTxt.innerText = `${amountVal} ${fromCur.value} = ${totalExRate} ${toCur.value}`;
+  } catch (error) {
+    exRateTxt.innerText = "Something went wrong";
+  }
+}
+
+window.addEventListener("load", getExchangeRate);
+getBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  getExchangeRate();
+});
+
+exIcon.addEventListener("click", () => {
+  [fromCur.value, toCur.value] = [toCur.value, fromCur.value];
+  [fromCur, toCur].forEach((select) => {
+    const code = select.value;
+    const imgTag = select.parentElement.querySelector("img");
+    imgTag.src = `https://flagcdn.com/48x36/${Country_List[
+      code
+    ].toLowerCase()}.png`;
+  });
+  getExchangeRate();
+});

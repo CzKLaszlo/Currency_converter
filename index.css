@@ -41,7 +41,7 @@ body::after {
 .container {
   width: 25rem;
   color: #fff;
-  background: rgba(0, 0, 0, 0.444);
+  background: rgba(0, 0, 0, 0.4);
   padding: 20px 30px;
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -70,7 +70,7 @@ body::after {
   background: transparent;
   color: #fff;
   border: 1px solid #999;
-  transition: all 0.3 ease;
+  transition: all 0.3s ease;
 }
 .container form input:hover {
   border: 1px solid #675afe;
@@ -100,7 +100,7 @@ body::after {
   padding: 0 20px;
   background: transparent;
   cursor: pointer;
-  transition: all 0.3 ease;
+  transition: all 0.3s ease;
 }
 .container .convert-box .select-input:hover {
   border: 1px solid #675afe;
@@ -124,7 +124,7 @@ body::after {
   margin-top: 32px;
   font-size: 22px;
   transform: rotate(90deg);
-  transition: all 0.3 ease;
+  transition: all 0.3s ease;
 }
 .container .convert-box .reverse:hover {
   color: #675afe;
